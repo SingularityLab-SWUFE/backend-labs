@@ -18,10 +18,13 @@ def middle(a, b, c):
             return c
 
 
-def sum_digits(y: int) -> int:
-    """
-    Sum all the digits of y.
-    """
+def sum_digits(y: float ) -> int:
+    a = '{:.0f}'.format(y) 
+    total = 0
+    for char in a:
+        if char.isdigit():  
+            total += int(char)
+    return total
     pass
 
 
@@ -29,4 +32,6 @@ def double_eights(n: int) -> bool:
     """
     Return True if n has two eights in a row.
     """
+    a=str(n)
+    return '88' in a           
     pass
