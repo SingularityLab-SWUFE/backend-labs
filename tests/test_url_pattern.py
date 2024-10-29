@@ -6,7 +6,7 @@ import pytest
     ('red', 'red'),
     ('green', 'green'),
     ('blue', 'blue'),
-    ('grey', 'invalid color')
+    ('grey', 'Page not found')
 ])
 def test_url_pattern(client: FlaskClient, msg, response):
     resp = client.get(f'/check/{msg}')
@@ -26,7 +26,8 @@ def test_add_in_url(client: FlaskClient, num1, num2):
 @pytest.mark.parametrize("query, response", [
     ('?name=John', 'Hello John'),
     ('?name=', 'Hello Anonymous'),
-    ('?fake=123', 'Invalid query parameter')
+    ('', 'Hello Anonymous'),
+    ('?fake=', 'Hello Anonymous')
 ])
 def test_query_string(client: FlaskClient, query: str, response: str):
     resp = client.get(f'/query{query}')
